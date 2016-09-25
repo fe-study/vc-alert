@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="./static/css/bootstrap.min.css">
+<title>vc-alert - demo</title>
+<style>
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+    ::-webkit-scrollbar-thumb {
+        box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.5);
+        border-radius: 4px;
+        background: rgba(119, 129, 149, 0.8);
+    }
+    .container {
+        width: 350px;
+        padding: 20px;
+    }
+    .container label {
+        font-weight: normal;
+    }
+    button.btn {
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+    .position-class {
+        position: fixed;
+        right: 10px;
+        top: 10px;
+    }
+</style>
+</head>
+<body>
+    <h1 align="center">@Vue Component - vc-alert</h1>
+    <div class="text-center">警告框组件,用于提供一种视觉明显的警示</div>
+    <div class="text-center">可以在文档流中，也可以固定在页面一定位置</div>
+    <a style="display: block" class="text-center" href="https://github.com/iwaimai-bi-fe/vc-checkbox">view on Github</a>
+    <hr>
+
+    <div id="app" class="container">
+
+        <button class="btn btn-sm btn-primary btn-block" @click="toggle">toggle</button>
+        <br>
+        <button class="btn btn-sm btn-success" @click="topSuccess">上方success</button>
+        <button class="btn btn-sm btn-danger" @click="topRightDanger">右上方danger</button>
+        <button class="btn btn-sm btn-info" @click="topInfoNoDismissable">上方没叉号</button>
+
+        <br>
+        <button class="btn btn-sm btn-default" @click="indocument">在文档流</button>
+        <button class="btn btn-sm btn-default" @click="customPosition">自定义位置</button>
+
+
+        <vc-alert 
+            :show.sync="show"
+            :mode="mode"
+            :placement="placement"
+            :duration="duration"
+            :type="type"
+            :width="width"
+            :position-class="positionClass"
+            :dismissable="dismissable"
+        >
+            <span class="icon-ok-circled alert-icon-float-left"></span>
+            <strong>Well Done!</strong>
+            <p>You successfully read this important alert message.</p>
+        </vc-alert>
+
+        <div class="form-group">
+            <label>配置组件的width</label>
+            <input type="text" class="form-control" width="width" v-model="width" />
+        </div>
+
+        <div class="form-group">
+            <label>配置组件的duration</label>
+            <input type="text" class="form-control" duration="duration" v-model="duration" />
+        </div>
+
+        <div class="form-group">
+            <div>show</div>
+            <label><input type="radio" :value="bools.true" name="show" v-model="show">是</label>
+            <label><input type="radio" :value="bools.false" name="show" v-model="show">否</label>
+        </div>
+
+        <div class="form-group">
+            <div>mode</div>
+            <label><input type="radio" value="fixed" name="mode" v-model="mode">fixed</label>
+            <label><input type="radio" value="relative" name="mode" v-model="mode">relative</label>
+            <label><input type="radio" value="static" name="mode" v-model="mode">static</label>
+        </div>
+
+        <div class="form-group">
+            <div>dismissable</div>
+            <label><input type="radio" :value="bools.true" name="dismissable" v-model="dismissable">是</label>
+            <label><input type="radio" :value="bools.false" name="dismissable" v-model="dismissable">否</label>
+        </div>
+
+        <div class="form-group">
+            <div>placement</div>
+            <label><input type="radio" value="top" name="placement" v-model="placement">上方</label>
+            <label><input type="radio" value="top-right" name="placement" v-model="placement">右上方</label>
+        </div>
+
+        <div class="form-group">
+            <div>type</div>
+            <label><input type="radio" value="success" name="type" v-model="type">success</label>
+            <label><input type="radio" value="warning" name="type" v-model="type">warning</label>
+            <label><input type="radio" value="danger" name="type" v-model="type">danger</label>
+            <label><input type="radio" value="info" name="type" v-model="type">info</label>
+        </div>
+
+    </div>
+<script src='../dist/example.js'></script>
+</body>
+</html>
