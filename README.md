@@ -14,7 +14,7 @@
 `npm install vc-alert --save`
 
 if you are using single file `*.vue` in project, please import the component by:  
-`import vcAlert from 'vc-popover/src/Alert.vue'`
+`import vcAlert from 'vc-alert/src/Alert.vue'`
 
 ## Demo
 
